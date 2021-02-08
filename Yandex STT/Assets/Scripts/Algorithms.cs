@@ -104,9 +104,11 @@ namespace Algorithms
 
             for (int i = 0; i < text.Length; i++)
             {
-                if(text[i] == ' ' || text[i] == ',' || i + 1 == text.Length)
+                if(text[i] == ' ' || text[i] == ',' || i == text.Length - 1)
                 {
-                    listWords.Add(GetWord(text, beginIndex, i));
+                    string word = GetWord(text, beginIndex, i - 1);
+
+                    listWords.Add(word);
                     beginIndex = i + 1;
                 }
             }
