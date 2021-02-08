@@ -5,6 +5,17 @@ using System.Collections.Generic;
 * Algorithm's library 
 * which includes:
 * 1) Levenshtein (measuring the difference between two character sequences);
+* 
+*    1. Levenshtein.GetDistance(string, string) 
+*    
+*       return: int distance between two character sequences 
+*       description: Classic algorithm
+*       
+*    2. Levenshtein.FindSubNGetDistance(pattern, text) 
+*    
+*       return: distance between found string (if found) and pattern string 
+*       description: Extend for classic Levenshtein algorithm, which added find substring by pattern
+*       
 * 2) KnuttMorrisPratt (find substring with prefix);
 * 3)
 * 
@@ -14,7 +25,7 @@ namespace Algorithms
 {
     public class Levenstein //Get Distance between two strings(often use for detect the gramma errors)
     {
-        public int GetDistance(string str1, string str2) 
+        public int GetDistance(string str1, string str2) //Classic algorithm Levenshtein.GetDistance(string, string) return: int distance between two character sequences
         {
             int diff;
             int[,] m = new int[str1.Length + 1, str2.Length + 1];
@@ -35,7 +46,7 @@ namespace Algorithms
             return m[str1.Length, str2.Length];
         }
 
-        public string FindSubNGetDistance(string pattern, string text)
+        public string FindSubNGetDistance(string pattern, string text) //Extend for classic Levenshtein algorithm, which added find substring by pattern and return distance between found string (if found) and pattern string Levenshtein 
         {
             string[] wordsArray = GetArrayOfWords(text);
 
