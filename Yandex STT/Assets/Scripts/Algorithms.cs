@@ -2,22 +2,27 @@ using System;
 using System.Collections.Generic;
 
 /**
-* Algorithm's library 
+* Algorithms library 
 * which includes:
-* 1) Levenshtein (measuring the difference between two character sequences);
+* 
+* 1) Levenshtein (measuring the difference between two character sequences)
 * 
 *    1. Levenshtein.GetDistance(string, string) 
 *    
-*       return: int distance between two character sequences 
+*       return: <int> distance between two character sequences 
 *       description: Classic algorithm
 *       
-*    2. Levenshtein.FindSubNGetDistance(pattern, text) 
+* 2) ParseString (parsing string)
+* 
+*    1. ParseString.FindSubstring(pattern, text)
 *    
-*       return: distance between found string (if found) and pattern string 
-*       description: Extend for classic Levenshtein algorithm, which added find substring by pattern
+*       return: <string> found patern in text
 *       
-* 2) KnuttMorrisPratt (find substring with prefix);
-* 3)
+*    2. ParseString.FindSubstring(patterns[], text)
+*    
+*       return: <string> found patern from patters array in text
+* 
+* 3) KnuttMorrisPratt (find substring with prefix)
 * 
 */
 
@@ -45,14 +50,51 @@ namespace Algorithms
 
             return m[str1.Length, str2.Length];
         }
+    }
 
-        public string FindSubNGetDistance(string pattern, string text) //Extend for classic Levenshtein algorithm, which added find substring by pattern and return distance between found string (if found) and pattern string Levenshtein 
+    public class ParseString
+    {
+        public string FindSubstring(string pattern, string text)
         {
             string[] wordsArray = GetArrayOfWords(text);
+            string foundWord = "";
 
+            foreach (string word in wordsArray)
+            {
+                if (pattern[0] == word[0])
+                {
+                     if (IsSequenceSame(pattern, word))
+                     {
+                        foundWord = pattern;
+                        break;
+                     }
+                }
+             }
 
+            return foundWord;
+        }
 
-            return "";
+        public string FindSubstring(string[] patterns, string text)
+        {
+            string[] wordsArray = GetArrayOfWords(text);
+            string foundWord = "";
+
+            foreach (string word in wordsArray)
+            {
+                foreach(string pattern in patterns)
+                {
+                    if (pattern[0] == word[0])
+                    {
+                        if (IsSequenceSame(pattern, word))
+                        {
+                            foundWord = pattern;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return foundWord;
         }
 
         string[] GetArrayOfWords(string text)
@@ -60,9 +102,9 @@ namespace Algorithms
             List<string> listWords = new List<string>();
             int beginIndex = 0;
 
-            for(int i = 0; i < text.Length; i++)
+            for (int i = 0; i < text.Length; i++)
             {
-                if(text[i] == ' ' || text[i] == ',')
+                if(text[i] == ' ' || text[i] == ',' || i + 1 == text.Length)
                 {
                     listWords.Add(GetWord(text, beginIndex, i));
                     beginIndex = i + 1;
@@ -79,6 +121,17 @@ namespace Algorithms
             for (int i = beginIndex; i <= endIndex; i++) { word += text[i]; }
 
             return word;
+        }
+
+        bool IsSequenceSame(string str1, string str2)
+        {
+            for (int i = 0; i < str2.Length; i++)
+            {
+                if (str1[i] == str2[i]) { continue; }
+                else { return false; }
+            }
+
+            return true;
         }
     }
 

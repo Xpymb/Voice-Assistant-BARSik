@@ -24,7 +24,6 @@ public class Yandex : MonoBehaviour
     public string format = "lpcm";
     public string sampleRateHertz = "48000";
     
-
     void Start()
     {
         Manager = GetComponent<AudioManager>();

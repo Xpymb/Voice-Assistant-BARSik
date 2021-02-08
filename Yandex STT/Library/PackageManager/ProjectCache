@@ -5,15 +5,15 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637473486521531481
-    m_Hash: 2532074112
+      ticks: 637483874548992282
+    m_Hash: 2507355069
   m_LockFileStatus:
     m_FilePath: C:/Repositories/Voice-Assistant-BARSik/Yandex STT/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637483833677647422
+      ticks: 637483874918282380
     m_Hash: 1318203492
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -92,6 +92,7 @@ m_PackageAssets:
         - 5.0.2
         - 5.0.3
         - 6.0.0-pre.1
+        - 6.0.0-pre.2
         compatible:
         - 5.0.3
         verified: 5.0.3
@@ -190,6 +191,7 @@ m_PackageAssets:
         - 4.0.0
         - 4.0.1
         - 5.0.0-pre.1
+        - 5.0.0-pre.2
         compatible:
         - 4.0.1
         verified: 4.0.1
@@ -273,6 +275,7 @@ m_PackageAssets:
         - 4.0.1
         - 4.0.2
         - 5.0.0-pre.1
+        - 5.0.0-pre.2
         compatible:
         - 4.0.2
         verified: 4.0.2
@@ -445,6 +448,7 @@ m_PackageAssets:
         - 5.0.2
         - 5.1.0
         - 6.0.0-pre.1
+        - 6.0.0-pre.2
         compatible:
         - 5.1.0
         verified: 5.1.0
@@ -3272,6 +3276,7 @@ m_PackageAssets:
         - 4.0.2
         - 4.0.3
         - 5.0.0-pre.1
+        - 5.0.0-pre.2
         compatible:
         - 4.0.2
         - 4.0.3
@@ -3352,6 +3357,7 @@ m_PackageAssets:
         - 4.0.0
         - 4.0.1
         - 5.0.0-pre.1
+        - 5.0.0-pre.2
         compatible:
         - 4.0.1
         verified: 4.0.1
