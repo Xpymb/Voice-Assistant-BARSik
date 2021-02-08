@@ -127,7 +127,9 @@ namespace Algorithms
 
         bool IsSequenceSame(string str1, string str2)
         {
-            for (int i = 0; i < str2.Length; i++)
+            int len = Math.Min(str1.Length, str2.Length);
+
+            for (int i = 0; i < len; i++)
             {
                 if (str1[i] == str2[i]) { continue; }
                 else { return false; }
