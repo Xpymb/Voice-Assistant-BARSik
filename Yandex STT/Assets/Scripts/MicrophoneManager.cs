@@ -3,17 +3,25 @@ using System.IO;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class MicrophoneManager : MonoBehaviour 
+public class MicrophoneManager : MonoBehaviour
 {
-	public int AudioSampleRate = 48000;
-	public string _microphone = null; //null = default
-    public static AudioClip Audio;
-	public static AudioClip AudioSynth;
-    AudioSource AudioManager;
+    #region Singleton
+    private MicrophoneManager() { }
+
+    private static readonly Lazy<MicrophoneManager> lazy =
+        new Lazy<MicrophoneManager>(() => new MicrophoneManager());
+
+    public static MicrophoneManager Source { get { return lazy.Value; } }
+    #endregion
+
+    public string microphoneId = null; //null = default
+    public static new AudioClip audio;
+    public int AudioSampleRate = 48000;
+    AudioSource manager;
 
     void Start() 
 	{
-        AudioManager = GetComponent<AudioSource>();
+        manager = GetComponent<AudioSource>();
 	}
 
 	#region Record
@@ -22,33 +30,34 @@ public class MicrophoneManager : MonoBehaviour
         if (!HasConnectedMicDevices())
             return;
 
-        Debug.Log("recording started with " + _microphone);
+        Debug.Log("recording started with " + microphoneId);
 
-		Audio = Microphone.Start(_microphone, true, 10, AudioSampleRate);
+        audio = Microphone.Start(microphoneId, true, 10, AudioSampleRate);
 
-		Debug.Log(Microphone.IsRecording(_microphone).ToString());
+		Debug.Log(Microphone.IsRecording(microphoneId).ToString());
 
-        AudioManager.clip = Audio;
-        AudioManager.Play();
+        manager.clip = audio;
+        manager.Play();
     }
 
     public void Stop()
     {
-        AudioManager.Stop();
+        manager.Stop();
 
-        if (!HasConnectedMicDevices() || !IsRecordingNow(_microphone))
+        if (!HasConnectedMicDevices() || !IsRecordingNow(microphoneId))
             return;
 
-        Microphone.End(_microphone);
+        Microphone.End(microphoneId);
     }
 
     public void Play()
     {
-        if (Audio == null)
+        if (audio == null)
             return;
 
-        AudioManager.clip = Audio;
-        AudioManager.Play();
+        manager.clip = audio;
+        manager.Play();
+        manager.Play();
     }
 
     bool HasConnectedMicDevices()
@@ -63,6 +72,10 @@ public class MicrophoneManager : MonoBehaviour
 	#endregion
 
 	#region Export
+    public static AudioClip GetAudio()
+    {
+        return audio;
+    }
 
 	public static Byte[] GetBytes(AudioClip clip)
 	{
@@ -89,6 +102,5 @@ public class MicrophoneManager : MonoBehaviour
 
 		return bytesData;
 	}
-
 	#endregion
 }

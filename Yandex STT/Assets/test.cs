@@ -8,6 +8,7 @@ public class test : MonoBehaviour
     public InputField field2;
     public Text textField;
     ParseString ParseString = new ParseString();
+
     public void UpdateResult()
     {
         string[] str1 = new string[1];
