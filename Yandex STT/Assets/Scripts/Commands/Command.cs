@@ -1,23 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Algorithms;
 
 namespace Commands
 {
     public abstract class Command : ICommand
     {
-        public string name { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public string[] patterns { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public string[] answers { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public string name;
+        public string[] patterns;
+        public string[] answers;
 
         public string Exectute()
         {
             return "";
         }
 
-        public void ShowResult()
+        public bool IsItI(string str)
         {
-            throw new System.NotImplementedException();
+            ParseString parseString = new ParseString();
+            string foundString;
+
+            foreach (string pattern in patterns)
+            {
+                foundString = parseString.FindSubstring(pattern, str);
+
+                if (foundString != "")
+                    return true;
+            }
+
+            return false;
         }
     }
 }

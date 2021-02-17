@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using UnityEngine.UI;
+using AudioManager;
 
 namespace Yandex
 {
@@ -12,47 +12,31 @@ namespace Yandex
 
     public class SpeechKit : MonoBehaviour
     {
-        #region Singleton
-        private SpeechKit() { }
-
-        private static readonly Lazy<SpeechKit> lazy =
-            new Lazy<SpeechKit>(() => new SpeechKit());
-
-        public static SpeechKit Source { get { return lazy.Value; } }
-        #endregion
-
         [Header("API's settings")]
         public string oauthToken = "AgAAAAAQt4xZAATuwacF_qkkxEP7pG4WwRNX2xU";
         public string folderId = "b1gldqr9q0t8qtsfr738";
         public string apiUri = "https://stt.api.cloud.yandex.net/speech/v1/";
         public string iamUri = "https://iam.api.cloud.yandex.net/iam/v1/tokens";
         string iamToken = "AQVNyhou-goyFAgSYZH2KM7RQdfKWMktqkl2jUjr";
-        SynthesizeManager Manager;
+        MicrophoneManager microphoneManager = new MicrophoneManager();
+        SynthesizeManager synthesizeManager = new SynthesizeManager();
 
         [Space]
         [Header("Synthesize's settings")]
-        public InputField textSynth;
         public string voice = "oksana";
         public string speedVoice = "1.0";
         public string format = "lpcm";
         public string sampleRateHertz = "48000";
 
-        void Start()
+        async public void Recognize(AudioClip audio) //Yandex SpeechKit Recognize Request
         {
-            Manager = GetComponent<SynthesizeManager>();
-        }
-
-        async public void Recognize() //Yandex SpeechKit Recognize Request
-        {
-            AudioClip audio = MicrophoneManager.GetAudio();
-
             if (audio == null)
             {
                 Debug.Log("Recognize: Audioclip not found, please record audio and try again");
                 return;
             }
 
-            byte[] bytesArray = MicrophoneManager.GetBytes(audio);
+            byte[] bytesArray = microphoneManager.GetBytes(audio);
 
             using (HttpClient client = new HttpClient())
             {
@@ -60,12 +44,12 @@ namespace Yandex
                 client.DefaultRequestHeaders.Add("Authorization", "Api-Key " + iamToken);
 
                 var values = new List<string>
-            {
-                "lang=ru-RU",
-                "topic=general",
-                "format=lpcm",
-                "sampleRateHertz=48000"
-            };
+                {
+                    "lang=ru-RU",
+                    "topic=general",
+                    "format=lpcm",
+                    "sampleRateHertz=48000"
+                };
 
                 var uriValues = String.Join("&", values);
                 var content = CreateContent(new Uri($"{apiUri}stt:recognize?{uriValues}"), bytesArray);
@@ -77,10 +61,8 @@ namespace Yandex
             }
         }
 
-        async public void Synthesize() //Yandex SpeechKit Synthesize Request
+        async public void Synthesize(string text) //Yandex SpeechKit Synthesize Request
         {
-            string text = textSynth.text;
-
             if (text == "")
             {
                 Debug.Log("Synthesize: Please enter text in InputField and try again");
@@ -93,28 +75,28 @@ namespace Yandex
                 client.DefaultRequestHeaders.Add("Authorization", "Api-Key " + iamToken);
 
                 var values = new Dictionary<string, string>
-            {
-                { "text", text },
-                { "lang", "ru-RU" },
-                { "format", format },
-                { "voice", voice },
-                { "sampleRateHertz", sampleRateHertz },
-                { "speed", speedVoice }
-            };
+                {
+                    { "text", text },
+                    { "lang", "ru-RU" },
+                    { "format", format },
+                    { "voice", voice },
+                    { "sampleRateHertz", sampleRateHertz },
+                    { "speed", speedVoice }
+                };
 
-                var content = new FormUrlEncodedContent(values);
+                var content = CreateContent(values);
                 var response = await client.PostAsync("https://tts.api.cloud.yandex.net/speech/v1/tts:synthesize", content);
                 var responseArray = await response.Content.ReadAsByteArrayAsync();
 
-                Manager.UpdateAudioClip(responseArray);
+                synthesizeManager.UpdateAudioClip(responseArray);
 
                 Debug.Log("Synthesize is done, you can click on play button");
             }
         }
 
-        HttpRequestMessage CreateContent(Uri uri) //Create HTTPRequest without body content
+        FormUrlEncodedContent CreateContent(Dictionary<string, string> values) //Create FormUrlEncodedContent without body content
         {
-            return new HttpRequestMessage { RequestUri = uri, Method = HttpMethod.Post, Content = null };
+            return new FormUrlEncodedContent(values);
         }
 
         HttpRequestMessage CreateContent(Uri uri, byte[] bytesArray) //Create HTTPRequest with body content
@@ -127,5 +109,4 @@ namespace Yandex
             return Encoding.UTF8.GetString(responseArray);
         }
     }
-
 }

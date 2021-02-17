@@ -1242,7 +1242,6 @@ GameObject:
   - component: {fileID: 400441807}
   - component: {fileID: 400441806}
   - component: {fileID: 400441810}
-  - component: {fileID: 400441809}
   m_Layer: 0
   m_Name: ScriptHolder
   m_TagString: Untagged
@@ -1280,7 +1279,6 @@ MonoBehaviour:
   folderId: b1gldqr9q0t8qtsfr738
   apiUri: https://stt.api.cloud.yandex.net/speech/v1/
   iamUri: https://iam.api.cloud.yandex.net/iam/v1/tokens
-  textSynth: {fileID: 1031289469}
   voice: oksana
   speedVoice: 1.0
   format: lpcm
@@ -1395,21 +1393,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &400441809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 400441804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a180f7e7d4891c44a62238a90a5be5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  field1: {fileID: 270381335}
-  field2: {fileID: 1201198032}
-  textField: {fileID: 1427038347}
 --- !u!114 &400441810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1977,19 +1960,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 657281823}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 400441806}
-        m_TargetAssemblyTypeName: Yandex, Assembly-CSharp
-        m_MethodName: Synthesize
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &657281823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2129,19 +2100,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 693263092}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 400441806}
-        m_TargetAssemblyTypeName: Yandex, Assembly-CSharp
-        m_MethodName: Recognize
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &693263092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2475,19 +2434,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 944725997}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 400441809}
-        m_TargetAssemblyTypeName: test, Assembly-CSharp
-        m_MethodName: UpdateResult
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &944725997
 MonoBehaviour:
   m_ObjectHideFlags: 0
