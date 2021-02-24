@@ -1,4 +1,7 @@
 using Commands;
+using Yandex;
+using AudioManager;
+using UnityEngine;
 
 namespace BotController
 {
@@ -8,6 +11,25 @@ namespace BotController
                                            new HelloCommand(),
                                            new SearchCommand(),
                                        };
+
+        SpeechKit speechKit = new SpeechKit();
+        SynthesizeManager synthesizeManager = new SynthesizeManager();
+
+
+        public void Synthesize(string str)
+        {
+            speechKit.Synthesize(str);
+        }
+
+        public void Recognize(AudioClip audio)
+        {
+            speechKit.Recognize(audio);
+        }
+
+        public void PlaySynthenized()
+        {
+            synthesizeManager.Play();
+        }
 
         public ICommand ChooseCommand(string str)
         {

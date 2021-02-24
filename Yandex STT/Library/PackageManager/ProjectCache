@@ -5,15 +5,15 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637491633089706853
-    m_Hash: 2507360050
+      ticks: 637489991606928269
+    m_Hash: 3922620741
   m_LockFileStatus:
     m_FilePath: C:/Repositories/Voice-Assistant-BARSik/Yandex STT/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637491638975340537
+      ticks: 637493918496880097
     m_Hash: 1892190617
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -91,10 +91,13 @@ m_PackageAssets:
         - 5.0.1
         - 5.0.2
         - 5.0.3
+        - 5.0.4
         - 6.0.0-pre.1
+        - 6.0.0-pre.2
         compatible:
         - 5.0.3
-        verified: 5.0.3
+        - 5.0.4
+        verified: 5.0.4
       dependencies:
       - name: com.unity.2d.common
         version: 4.0.3
@@ -190,6 +193,7 @@ m_PackageAssets:
         - 4.0.0
         - 4.0.1
         - 5.0.0-pre.1
+        - 5.0.0-pre.2
         compatible:
         - 4.0.1
         verified: 4.0.1
@@ -273,6 +277,7 @@ m_PackageAssets:
         - 4.0.1
         - 4.0.2
         - 5.0.0-pre.1
+        - 5.0.0-pre.2
         compatible:
         - 4.0.2
         verified: 4.0.2
@@ -430,6 +435,7 @@ m_PackageAssets:
         - 3.0.12
         - 3.0.13
         - 3.0.14
+        - 3.0.15
         - 4.0.0
         - 4.0.1
         - 4.0.2
@@ -444,10 +450,13 @@ m_PackageAssets:
         - 5.0.1
         - 5.0.2
         - 5.1.0
+        - 5.1.1
         - 6.0.0-pre.1
+        - 6.0.0-pre.2
         compatible:
         - 5.1.0
-        verified: 5.1.0
+        - 5.1.1
+        verified: 5.1.1
       dependencies:
       - name: com.unity.mathematics
         version: 1.1.0
@@ -693,6 +702,7 @@ m_PackageAssets:
         - 3.0.1
         - 3.0.2
         - 3.0.3
+        - 3.0.4
         compatible:
         - 1.0.2
         - 1.0.6
@@ -715,6 +725,7 @@ m_PackageAssets:
         - 3.0.1
         - 3.0.2
         - 3.0.3
+        - 3.0.4
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
@@ -782,6 +793,7 @@ m_PackageAssets:
         - 2.0.2
         - 2.0.3
         - 2.0.5
+        - 2.0.7
         compatible:
         - 1.0.2
         - 1.0.3
@@ -794,7 +806,8 @@ m_PackageAssets:
         - 2.0.2
         - 2.0.3
         - 2.0.5
-        verified: 2.0.5
+        - 2.0.7
+        verified: 2.0.7
       dependencies: []
       resolvedDependencies: []
       keywords: []
@@ -979,6 +992,7 @@ m_PackageAssets:
         - 7.4.3
         - 7.5.1
         - 7.5.2
+        - 7.5.3
         - 8.0.1
         - 8.1.0
         - 8.2.0
@@ -992,6 +1006,7 @@ m_PackageAssets:
         - 10.2.0
         - 10.2.1
         - 10.2.2
+        - 10.3.1
         compatible:
         - 10.2.2
         verified: 10.2.2
@@ -3397,9 +3412,11 @@ m_PackageAssets:
         - 7.4.2
         - 7.4.3
         - 7.5.1
+        - 7.5.2
         - 8.0.1
         - 8.1.0
         - 8.2.0
+        - 8.3.1
         - 9.0.0-preview.13
         - 9.0.0-preview.35
         - 9.0.0-preview.38
@@ -3407,6 +3424,8 @@ m_PackageAssets:
         - 9.0.0-preview.77
         - 10.0.0-preview.30
         - 10.1.0
+        - 10.2.0
+        - 10.2.1
         - 10.2.2
         compatible:
         - 10.2.2
@@ -3434,12 +3453,12 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637430478820000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.com/Unity-Technologies/Graphics.git
+        url: git+https://github.com/Unity-Technologies/Graphics.git
         revision: a197e35ba4e93349ccbb4fddd4f3f80ba7b1c113
         path: 
     - packageId: com.unity.searcher@4.3.1
@@ -3629,6 +3648,7 @@ m_PackageAssets:
         - 4.0.2
         - 4.0.3
         - 5.0.0-pre.1
+        - 5.0.0-pre.2
         compatible:
         - 4.0.2
         - 4.0.3
@@ -3709,6 +3729,7 @@ m_PackageAssets:
         - 4.0.0
         - 4.0.1
         - 5.0.0-pre.1
+        - 5.0.0-pre.2
         compatible:
         - 4.0.1
         verified: 4.0.1
